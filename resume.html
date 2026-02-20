@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Md. Iqbal Hussain – SDET Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* ── Screen styles ── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: #f0f4f8;
+            color: #1a202c;
+            line-height: 1.6;
+        }
+
+        /* Download bar */
+        .download-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .download-bar .bar-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .bar-icon {
+            font-size: 1.5rem;
+        }
+
+        .bar-text {
+            color: #fff;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .bar-sub {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.8rem;
+            margin-top: 2px;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #fff;
+            color: #8b5cf6;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 12px 28px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+        }
+
+        .btn-download svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .btn-back:hover {
+            color: #fff;
+        }
+
+        /* Resume card */
+        .resume-wrapper {
+            max-width: 860px;
+            margin: 100px auto 60px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        /* Header band */
+        .resume-header {
+            background: linear-gradient(135deg, #1e1b4b 0%, #1e3a5f 100%);
+            padding: 44px 48px 36px;
+            color: #fff;
+        }
+
+        .resume-name {
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .resume-title {
+            font-size: 1.05rem;
+            color: #a5b4fc;
+            font-weight: 500;
+            margin-top: 6px;
+        }
+
+        .resume-contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .contact-item a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            color: #fff;
+        }
+
+        /* Body */
+        .resume-body {
+            padding: 40px 48px 48px;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 32px;
+        }
+
+        .section-title {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #8b5cf6;
+            border-bottom: 2px solid #8b5cf6;
+            padding-bottom: 6px;
+            margin-bottom: 16px;
+        }
+
+        /* Summary */
+        .summary-text {
+            font-size: 0.9rem;
+            color: #374151;
+            line-height: 1.75;
+        }
+
+        /* Experience */
+        .exp-item {
+            margin-bottom: 22px;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .exp-role {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .exp-company {
+            font-size: 0.85rem;
+            color: #6d28d9;
+            font-weight: 600;
+        }
+
+        .exp-client {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .exp-date {
+            font-size: 0.8rem;
+            color: #6b7280;
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .exp-bullets {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .exp-bullets li {
+            font-size: 0.85rem;
+            color: #374151;
+            padding-left: 16px;
+            position: relative;
+            margin-bottom: 5px;
+            line-height: 1.65;
+        }
+
+        .exp-bullets li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #8b5cf6;
+            font-weight: 700;
+        }
+
+        /* Skills grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .skill-group h4 {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #374151;
+            margin-bottom: 5px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .skill-tag {
+            font-size: 0.75rem;
+            font-weight: 500;
+            background: #f3f4f6;
+            color: #374151;
+            padding: 3px 10px;
+            border-radius: 100px;
+            border: 1px solid #e5e7eb;
+        }
+
+        /* Projects */
+        .proj-item {
+            margin-bottom: 18px;
+        }
+
+        .proj-header {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+        }
+
+        .proj-name {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .proj-client {
+            font-size: 0.78rem;
+            color: #6b7280;
+        }
+
+        .proj-desc {
+            font-size: 0.84rem;
+            color: #374151;
+            margin-top: 5px;
+            line-height: 1.65;
+        }
+
+        /* Education */
+        .edu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-bottom: 12px;
+        }
+
+        .edu-degree {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .edu-school {
+            font-size: 0.82rem;
+            color: #6b7280;
+        }
+
+        .edu-year {
+            font-size: 0.8rem;
+            color: #6b7280;
+            white-space: nowrap;
+        }
+
+        /* ATS keyward watermark section (hidden visually but readable by ATS) */
+        .ats-keywords {
+            font-size: 0;
+            color: transparent;
+            display: none;
+        }
+
+        /* ── PRINT styles ── */
+        @media print {
+            @page {
+                size: A4;
+                margin: 15mm 16mm;
+            }
+
+            body {
+                background: #fff;
+            }
+
+            .download-bar {
+                display: none !important;
+            }
+
+            .resume-wrapper {
+                margin: 0;
+                border-radius: 0;
+                box-shadow: none;
+                max-width: 100%;
+            }
+
+            .resume-header {
+                padding: 28px 36px 22px;
+            }
+
+            .resume-name {
+                font-size: 2rem;
+            }
+
+            .resume-body {
+                padding: 28px 36px 36px;
+            }
+
+            .section {
+                margin-bottom: 22px;
+                page-break-inside: avoid;
+            }
+
+            a {
+                color: inherit !important;
+                text-decoration: none !important;
+            }
+
+            .btn-download {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ── Download bar (hidden on print) ── -->
+    <div class="download-bar">
+        <div class="bar-left">
+            <span class="bar-icon">📄</span>
+            <div>
+                <div class="bar-text">Md. Iqbal Hussain — SDET Resume</div>
+                <div class="bar-sub">Click Download to save as PDF • ATS Optimized</div>
+            </div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:center;">
+            <a href="index.html" class="btn-back">← Back to Portfolio</a>
+            <button class="btn-download" onclick="window.print()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 15V3m0 12l-4-4m4 4l4-4" />
+                    <path d="M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17" />
+                </svg>
+                Download PDF
+            </button>
+        </div>
+    </div>
+
+    <!-- ── Resume card ── -->
+    <div class="resume-wrapper" id="resume">
+
+        <!-- Header -->
+        <div class="resume-header">
+            <div class="resume-name">Md. Iqbal Hussain</div>
+            <div class="resume-title">Software Development Engineer in Test (SDET) | 4+ Years Experience</div>
+            <div class="resume-contact">
+                <span class="contact-item">📧 <a
+                        href="mailto:iqbalrimtian2214@gmail.com">iqbalrimtian2214@gmail.com</a></span>
+                <span class="contact-item">📞 <a href="tel:+917004171623">+91 7004171623</a></span>
+                <span class="contact-item">🔗 <a href="https://linkedin.com/in/md-iqbal-hussain-52b135155"
+                        target="_blank">linkedin.com/in/md-iqbal-hussain-52b135155</a></span>
+                <span class="contact-item">💻 <a href="https://github.com/iqbal-2214"
+                        target="_blank">github.com/iqbal-2214</a></span>
+                <span class="contact-item">🌐 <a href="https://iqbal-2214.github.io/portfolio/"
+                        target="_blank">iqbal-2214.github.io/portfolio</a></span>
+            </div>
+        </div>
+
+        <!-- Body -->
+        <div class="resume-body">
+
+            <!-- Professional Summary -->
+            <div class="section">
+                <div class="section-title">Professional Summary</div>
+                <p class="summary-text">
+                    Results-driven SDET with 4+ years of experience in mobile and web test automation at TestYantra
+                    Software Solutions Pvt Ltd, delivering high-quality QA for Xylem Inc. Proficient in Java, Appium,
+                    Selenium, and Playwright JS across Android and iOS platforms. Experienced in BDD (Cucumber), Hybrid,
+                    and Data-Driven frameworks. Leverages AI tools including GitHub Copilot, Appium MCP, and Playwright
+                    MCP to accelerate test script development, reduce manual effort, and improve coverage. Compatible
+                    with any test automation framework, with strong collaboration skills in Agile and Kanban
+                    environments.
+                </p>
+            </div>
+
+            <!-- Experience -->
+            <div class="section">
+                <div class="section-title">Work Experience</div>
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-role">Software Development Engineer in Test (SDET)</div>
+                            <div class="exp-company">TestYantra Software Solutions Pvt Ltd</div>
+                            <div class="exp-client">Client: Xylem Inc.</div>
+                        </div>
+                        <div class="exp-date">Jun 2022 – Present &nbsp;|&nbsp; 4+ Years</div>
+                    </div>
+                    <ul class="exp-bullets">
+                        <li>Designed and maintained end-to-end mobile automation frameworks using Java + Appium for
+                            Android and iOS platforms (Optimyze, Xylem X projects).</li>
+                        <li>Developed and executed web automation test suites using Selenium WebDriver, later migrated
+                            to Playwright JS for the Avensor data visualization platform.</li>
+                        <li>Implemented BDD framework using Cucumber with feature files, step definitions, and Gherkin
+                            syntax for improved test readability and collaboration.</li>
+                        <li>Built Hybrid and Data-Driven frameworks supporting multi-environment, multi-device, and
+                            multi-platform test execution.</li>
+                        <li>Conducted API testing using REST Assured and Postman, validating request/response payloads,
+                            status codes, and authentication flows.</li>
+                        <li>Integrated AI tools (GitHub Copilot, Appium MCP, Playwright MCP) to reduce test script
+                            creation time by approximately 50%.</li>
+                        <li>Set up CI/CD pipelines using GitHub Actions and Bitbucket for automated regression execution
+                            on every build.</li>
+                        <li>Performed real-device testing on Android and iOS simulators and physical devices for mobile
+                            apps.</li>
+                        <li>Collaborated with cross-functional Agile and Kanban teams, participated in sprint planning,
+                            reviews, and retrospectives.</li>
+                        <li>Maintained PostgreSQL database scripts and validated backend data integrity through SQL
+                            queries.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Projects -->
+            <div class="section">
+                <div class="section-title">Key Projects</div>
+
+                <div class="proj-item">
+                    <div class="proj-header">
+                        <span class="proj-name">Optimyze – IoT Asset Health Monitoring App</span>
+                        <span class="proj-client">| Xylem Inc.</span>
+                    </div>
+                    <p class="proj-desc">Mobile application for real-time IoT-based monitoring of industrial asset
+                        health. Developed mobile automation using Java + Appium on Android and iOS. Tech: Java, Appium,
+                        TestNG, Android, iOS.</p>
+                </div>
+
+                <div class="proj-item">
+                    <div class="proj-header">
+                        <span class="proj-name">Xylem X – Industrial Pump Controller App</span>
+                        <span class="proj-client">| Xylem Inc.</span>
+                    </div>
+                    <p class="proj-desc">Mobile application for controlling and monitoring industrial pump systems
+                        remotely. Developed automation for controller configurations and pump command flows. Tech: Java,
+                        Appium, TestNG, Android, iOS.</p>
+                </div>
+
+                <div class="proj-item">
+                    <div class="proj-header">
+                        <span class="proj-name">Avensor – Web Data Visualization Platform</span>
+                        <span class="proj-client">| Xylem Inc.</span>
+                    </div>
+                    <p class="proj-desc">Enterprise web application for sensor and operational data visualization. Led
+                        migration of Selenium framework to Playwright JS; integrated Playwright MCP for AI-assisted
+                        automation. Tech: Java, Selenium, Playwright JS, REST Assured, Postman, GitHub Actions.</p>
+                </div>
+            </div>
+
+            <!-- Skills -->
+            <div class="section">
+                <div class="section-title">Technical Skills</div>
+                <div class="skills-grid">
+                    <div class="skill-group">
+                        <h4>Automation Frameworks</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Java + Appium</span>
+                            <span class="skill-tag">Selenium WebDriver</span>
+                            <span class="skill-tag">Playwright JS</span>
+                            <span class="skill-tag">BDD / Cucumber</span>
+                            <span class="skill-tag">Hybrid Framework</span>
+                            <span class="skill-tag">Data-Driven</span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <h4>AI &amp; Modern Tools</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">GitHub Copilot</span>
+                            <span class="skill-tag">Appium MCP</span>
+                            <span class="skill-tag">Playwright MCP</span>
+                            <span class="skill-tag">GitHub Actions</span>
+                            <span class="skill-tag">Bitbucket CI</span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <h4>API &amp; Database</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">REST Assured</span>
+                            <span class="skill-tag">Postman</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">SQL</span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <h4>Platforms &amp; Languages</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Android</span>
+                            <span class="skill-tag">iOS</span>
+                            <span class="skill-tag">TestNG</span>
+                            <span class="skill-tag">Agile</span>
+                            <span class="skill-tag">Kanban</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="section">
+                <div class="section-title">Education</div>
+                <div class="edu-item">
+                    <div>
+                        <div class="edu-degree">B.Tech – Mechanical Engineering</div>
+                        <div class="edu-school">RIMT IET, Mandigobindgarh, Punjab</div>
+                    </div>
+                    <div class="edu-year">2017</div>
+                </div>
+                <div class="edu-item">
+                    <div>
+                        <div class="edu-degree">12th Standard – Science (Physics, Chemistry, Mathematics)</div>
+                        <div class="edu-school">Higher Secondary Education</div>
+                    </div>
+                    <div class="edu-year">2013</div>
+                </div>
+                <div class="edu-item">
+                    <div>
+                        <div class="edu-degree">10th Standard – Matriculation</div>
+                        <div class="edu-school">Secondary School Education</div>
+                    </div>
+                    <div class="edu-year">2011</div>
+                </div>
+            </div>
+
+            <!-- Certifications / Achievements -->
+            <div class="section">
+                <div class="section-title">AI Tools &amp; Achievements</div>
+                <ul class="exp-bullets">
+                    <li>Implemented Appium MCP and Playwright MCP server integrations for AI-driven test automation.
+                    </li>
+                    <li>Reduced test script creation time by ~50% using GitHub Copilot for code suggestions and test
+                        generation.</li>
+                    <li>Achieved ~98% test coverage on Xylem Inc. mobile and web applications.</li>
+                    <li>Successfully led Selenium to Playwright JS migration on Avensor platform.</li>
+                </ul>
+            </div>
+
+        </div><!-- /resume-body -->
+    </div><!-- /resume-wrapper -->
+
+    <script>
+        // Auto-show print dialog tip
+        document.querySelector('.btn-download').addEventListener('click', function () {
+            // Small delay so bar is hidden before print
+            setTimeout(() => window.print(), 100);
+        });
+    </script>
+
+</body>
+
+</html>
