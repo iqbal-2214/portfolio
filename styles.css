@@ -823,3 +823,68 @@ body {
   .ai-visual-block--reverse .ai-visual-image { order: 0; }
   .ai-visual-block--reverse .ai-visual-content { order: 0; }
 }
+
+/* ==============================
+   EDUCATION
+   ============================== */
+.edu-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 820px;
+  margin: 0 auto;
+}
+.edu-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 28px 32px;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+}
+.edu-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--purple), var(--cyan));
+}
+.edu-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-glow-purple);
+  transform: translateY(-3px);
+}
+.edu-year-badge {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--purple-light), var(--cyan-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  min-width: 52px;
+  text-align: center;
+}
+.edu-icon { font-size: 2rem; flex-shrink: 0; }
+.edu-content h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-1);
+  margin-bottom: 4px;
+}
+.edu-institute {
+  font-size: 0.88rem;
+  color: var(--purple-light);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.edu-detail {
+  font-size: 0.8rem;
+  color: var(--text-3);
+}
+@media (max-width: 600px) {
+  .edu-card { flex-wrap: wrap; gap: 14px; padding: 20px; }
+}
